@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StreamDecorator\StreamDecorator.csproj">
+      <Project>{3dcdd97d-d04f-4b2a-92b9-33dfd94a28dc}</Project>
+      <Name>StreamDecorator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
