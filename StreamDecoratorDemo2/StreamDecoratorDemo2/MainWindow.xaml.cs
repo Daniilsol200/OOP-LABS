@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace StreamDecoratorDemo2
 {
     /// <summary>
-    /// Логика взаимодействия для MainWi
+    /// Логика взаимодействия для
     /// </summary>
     public partial class MainWindow : Window
     {
