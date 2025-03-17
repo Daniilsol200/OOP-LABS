@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HashSetLib\HashSetLib.csproj">
+      <Project>{e5fd1518-b836-4e53-8e26-d8deb9129bf4}</Project>
+      <Name>HashSetLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
