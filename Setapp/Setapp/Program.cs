@@ -6,13 +6,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        CustomSet<char> set = new CustomSet<char>();
+        CustomSet<string> set = new CustomSet<string>(); // Используем string вместо char
         bool running = true;
 
         while (running)
         {
             Console.Clear();
-            Console.WriteLine("Custom Set Demo");
+            Console.WriteLine("Custom Set Demo (Strings)");
             Console.WriteLine("-------------------");
             Console.WriteLine("1. Add item");
             Console.WriteLine("2. Remove item");
@@ -27,11 +27,10 @@ class Program
             switch (choice)
             {
                 case "1":
-                    Console.Write("Enter a single character to add: ");
-                    string inputAdd = Console.ReadLine();
-                    if (!string.IsNullOrEmpty(inputAdd) && inputAdd.Length == 1)
+                    Console.Write("Enter a value to add (e.g., '11', 'abc'): ");
+                    string valueToAdd = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(valueToAdd)) // Проверяем, что ввод не пустой
                     {
-                        char valueToAdd = inputAdd[0];
                         if (set.Contains(valueToAdd))
                             Console.WriteLine($"Value '{valueToAdd}' already exists");
                         else
@@ -42,16 +41,15 @@ class Program
                     }
                     else
                     {
-                        Console.WriteLine("Please enter exactly one character");
+                        Console.WriteLine("Input cannot be empty");
                     }
                     break;
 
                 case "2":
-                    Console.Write("Enter a single character to remove: ");
-                    string inputRemove = Console.ReadLine();
-                    if (!string.IsNullOrEmpty(inputRemove) && inputRemove.Length == 1)
+                    Console.Write("Enter a value to remove (e.g., '11', 'abc'): ");
+                    string valueToRemove = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(valueToRemove))
                     {
-                        char valueToRemove = inputRemove[0];
                         if (set.Remove(valueToRemove))
                             Console.WriteLine($"Removed '{valueToRemove}'");
                         else
@@ -59,7 +57,7 @@ class Program
                     }
                     else
                     {
-                        Console.WriteLine("Please enter exactly one character");
+                        Console.WriteLine("Input cannot be empty");
                     }
                     break;
 
@@ -74,7 +72,7 @@ class Program
                         Console.WriteLine("Set is empty");
                     else
                     {
-                        foreach (char item in set)
+                        foreach (string item in set)
                         {
                             Console.Write($"{item} ");
                         }
