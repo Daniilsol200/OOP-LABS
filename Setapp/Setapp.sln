@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Setapp", "Setapp\Setapp.csproj", "{E9D4F979-4131-46E6-85F3-D4F44C28807B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSetLibrary", "CustomSetLibrary\CustomSetLibrary.csproj", "{0A5F96B4-39E2-47F2-B1D3-AEE8FAB387A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject3", "TestProject3\TestProject3.csproj", "{7EA04B74-2523-4DC5-9E23-8FFCCE3A8446}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0A5F96B4-39E2-47F2-B1D3-AEE8FAB387A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5F96B4-39E2-47F2-B1D3-AEE8FAB387A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5F96B4-39E2-47F2-B1D3-AEE8FAB387A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA04B74-2523-4DC5-9E23-8FFCCE3A8446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA04B74-2523-4DC5-9E23-8FFCCE3A8446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA04B74-2523-4DC5-9E23-8FFCCE3A8446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA04B74-2523-4DC5-9E23-8FFCCE3A8446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

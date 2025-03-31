@@ -12,7 +12,7 @@ class Program
         while (running)
         {
             Console.Clear();
-            Console.WriteLine("Custom Set Demo (Strings)");
+            Console.WriteLine("Custom Set Demo");
             Console.WriteLine("-------------------");
             Console.WriteLine("1. Add item");
             Console.WriteLine("2. Remove item");
@@ -27,7 +27,7 @@ class Program
             switch (choice)
             {
                 case "1":
-                    Console.Write("Enter a value to add (e.g., '11', 'abc'): ");
+                    Console.Write("Enter a value to add: ");
                     string valueToAdd = Console.ReadLine();
                     if (!string.IsNullOrEmpty(valueToAdd)) // Проверяем, что ввод не пустой
                     {
@@ -46,7 +46,7 @@ class Program
                     break;
 
                 case "2":
-                    Console.Write("Enter a value to remove (e.g., '11', 'abc'): ");
+                    Console.Write("Enter a value to remove: ");
                     string valueToRemove = Console.ReadLine();
                     if (!string.IsNullOrEmpty(valueToRemove))
                     {
