@@ -8,9 +8,9 @@ namespace TextEditorApp
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles(); // Включает современный стиль элементов управления
-            Application.SetCompatibleTextRenderingDefault(false); // Настройка рендеринга текста
-            Application.Run(new TextEditor()); // Запускает форму TextEditor
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new TextEditor());
         }
     }
 }
