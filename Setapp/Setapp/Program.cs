@@ -1,4 +1,5 @@
-﻿using CustomSetLibrary;
+﻿// CustomSetConsole/Program.cs
+using CustomSetLibrary;
 using System;
 
 class Program

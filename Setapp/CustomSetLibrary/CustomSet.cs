@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿// CustomSetLibrary/CustomSet.cs
+using System.Collections.Generic;
 
 namespace CustomSetLibrary
 {
