@@ -42,13 +42,14 @@ public class Circle
     private Color color;
     private Direction currentDirection;
     private int speed = 5;
+    private Random random = new Random();
 
-    public Circle(int x, int y, int radius, Color color)
+    public Circle(int x, int y, int radius, Color initialColor)
     {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = color;
+        this.color = initialColor;
         this.currentDirection = Direction.None;
     }
 
@@ -98,6 +99,12 @@ public class Circle
     // Метод вызова события
     protected virtual void OnDirectionChanged(Direction oldDirection, Direction newDirection)
     {
+        // Меняем цвет при смене направления
+        color = Color.FromArgb(
+            random.Next(256),  // Red
+            random.Next(256),  // Green
+            random.Next(256)); // Blue
+
         DirectionChanged?.Invoke(this, new DirectionChangedEventArgs(newDirection, oldDirection));
     }
 
@@ -119,6 +126,7 @@ public class Circle
         private void Circle_DirectionChanged(object sender, DirectionChangedEventArgs e)
         {
             Console.WriteLine($"Направление изменилось с {e.OldDirection} на {e.NewDirection}");
+            // Цвет уже изменен в OnDirectionChanged, здесь можно добавить дополнительную логику если нужно
         }
 
         protected override void OnPaint(PaintEventArgs e)
