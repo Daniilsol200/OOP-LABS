@@ -1,132 +1,62 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static Circle;
+using CircleLibrary;
 
-// Перечисление для направлений движения
-public enum Direction
+namespace lab5
 {
-    Up,
-    Down,
-    Left,
-    Right,
-    None
-}
-
-// Класс делегата для события смены направления
-public delegate void DirectionChangedEventHandler(object sender, DirectionChangedEventArgs e);
-
-// Класс аргументов события
-public class DirectionChangedEventArgs : EventArgs
-{
-    public Direction NewDirection { get; private set; }
-    public Direction OldDirection { get; private set; }
-
-    public DirectionChangedEventArgs(Direction newDirection, Direction oldDirection)
-    {
-        NewDirection = newDirection;
-        OldDirection = oldDirection;
-    }
-}
-
-// Основной класс Круг
-public class Circle
-{
-    // Событие смены направления
-    public event DirectionChangedEventHandler DirectionChanged;
-
-    // Свойства круга
-    private int x;
-    private int y;
-    private int radius;
-    private Color color;
-    private Direction currentDirection;
-    private int speed = 5;
-    private Random random = new Random();
-
-    public Circle(int x, int y, int radius, Color initialColor)
-    {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = initialColor;
-        this.currentDirection = Direction.None;
-    }
-
-    // Метод отрисовки круга
-    public void Draw(Graphics g)
-    {
-        using (SolidBrush brush = new SolidBrush(color))
-        {
-            g.FillEllipse(brush, x - radius, y - radius, radius * 2, radius * 2);
-        }
-    }
-
-    // Обработка нажатия клавиш
-    public void Move(KeyEventArgs e)
-    {
-        Direction oldDirection = currentDirection;
-        Direction newDirection = currentDirection;
-
-        switch (e.KeyCode)
-        {
-            case Keys.Up:
-                newDirection = Direction.Up;
-                y -= speed;
-                break;
-            case Keys.Down:
-                newDirection = Direction.Down;
-                y += speed;
-                break;
-            case Keys.Left:
-                newDirection = Direction.Left;
-                x -= speed;
-                break;
-            case Keys.Right:
-                newDirection = Direction.Right;
-                x += speed;
-                break;
-        }
-
-        // Если направление изменилось, вызываем событие
-        if (newDirection != oldDirection)
-        {
-            currentDirection = newDirection;
-            OnDirectionChanged(oldDirection, newDirection);
-        }
-    }
-
-    // Метод вызова события
-    protected virtual void OnDirectionChanged(Direction oldDirection, Direction newDirection)
-    {
-        // Меняем цвет при смене направления
-        color = Color.FromArgb(
-            random.Next(256),  // Red
-            random.Next(256),  // Green
-            random.Next(256)); // Blue
-
-        DirectionChanged?.Invoke(this, new DirectionChangedEventArgs(newDirection, oldDirection));
-    }
-
-    // Пример формы для тестирования
     public class CircleForm : Form
     {
         private Circle circle;
+        private const int SPEED = 5;
 
         public CircleForm()
         {
-            this.Width = 400;
-            this.Height = 400;
-            this.DoubleBuffered = true;
+            Width = 800;
+            Height = 600;
+            DoubleBuffered = true;
 
-            circle = new Circle(200, 200, 20, Color.Red);
+            circle = new Circle(new Point(Width / 2, Height / 2), 20, Color.Red, ClientSize);
             circle.DirectionChanged += Circle_DirectionChanged;
+            circle.EdgeReached += Circle_EdgeReached;
+
+            KeyDown += CircleForm_KeyDown;
+            Resize += CircleForm_Resize;
         }
 
         private void Circle_DirectionChanged(object sender, DirectionChangedEventArgs e)
         {
-            Console.WriteLine($"Направление изменилось с {e.OldDirection} на {e.NewDirection}");
-            // Цвет уже изменен в OnDirectionChanged, здесь можно добавить дополнительную логику если нужно
+            MessageBox.Show($"Направление изменилось на: {e.Direction}");
+        }
+
+        private void Circle_EdgeReached(object sender, EdgeReachedEventArgs e)
+        {
+            MessageBox.Show($"Круг достиг края: {e.Edge}");
+        }
+
+        private void CircleForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    circle.Move(Direction.Up, SPEED);
+                    break;
+                case Keys.Down:
+                    circle.Move(Direction.Down, SPEED);
+                    break;
+                case Keys.Left:
+                    circle.Move(Direction.Left, SPEED);
+                    break;
+                case Keys.Right:
+                    circle.Move(Direction.Right, SPEED);
+                    break;
+            }
+            Invalidate();
+        }
+
+        private void CircleForm_Resize(object sender, EventArgs e)
+        {
+            circle.UpdateFormSize(ClientSize);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -135,20 +65,10 @@ public class Circle
             circle.Draw(e.Graphics);
         }
 
-        protected override void OnKeyDown(KeyEventArgs e)
+        [STAThread]
+        static void Main()
         {
-            base.OnKeyDown(e);
-            circle.Move(e);
-            Invalidate(); // Перерисовка формы
+            Application.Run(new CircleForm());
         }
-    }
-}
-
-// Точка входа программы
-class Program
-{
-    static void Main()
-    {
-        Application.Run(new CircleForm());
     }
 }
