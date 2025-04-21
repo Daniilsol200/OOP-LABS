@@ -52,11 +52,5 @@
     <Compile Include="OrganizationDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\EquipmentRegistryApp\EquipmentRegistryApp.csproj">
-      <Project>{03bb7a25-b4ec-4d2a-bc01-7319dcb29310}</Project>
-      <Name>EquipmentRegistryApp</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

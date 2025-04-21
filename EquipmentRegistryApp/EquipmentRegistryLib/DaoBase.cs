@@ -13,7 +13,14 @@ namespace EquipmentRegistryLib
 
         public DaoBase()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["EquipmentRegistryConnection"].ConnectionString;
+            try
+            {
+                connectionString = ConfigurationManager.ConnectionStrings["EquipmentRegistryConnection"].ConnectionString;
+            }
+            catch (ConfigurationErrorsException ex)
+            {
+                throw new Exception("Ошибка чтения строки подключения: " + ex.Message);
+            }
         }
     }
 }
