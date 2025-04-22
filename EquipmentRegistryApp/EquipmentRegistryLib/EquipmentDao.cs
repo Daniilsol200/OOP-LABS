@@ -6,6 +6,7 @@ namespace EquipmentRegistryLib
 {
     public class EquipmentDao : DaoBase, IDao<Equipment>
     {
+
         public List<Equipment> GetAll()
         {
             var equipments = new List<Equipment>();
