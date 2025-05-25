@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\DaoBase.cs" />
+    <Compile Include="Dao\EquipmentService.cs" />
     <Compile Include="Таблицы\Equipment.cs" />
     <Compile Include="Dao\EquipmentDao.cs" />
     <Compile Include="Dao\EquipmentRegistryLib.cs" />

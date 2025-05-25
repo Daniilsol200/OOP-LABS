@@ -37,6 +37,7 @@
       <HintPath>..\packages\System.Configuration.ConfigurationManager.9.0.4\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao\DaoBase.cs" />
-    <Compile Include="Таблицы\Equipment.cs" />
+    <Compile Include="Dao\EquipmentService.cs" />
     <Compile Include="Dao\EquipmentDao.cs" />
     <Compile Include="Dao\EquipmentRegistryLib.cs" />
-    <Compile Include="Таблицы\EquipmentType.cs" />
     <Compile Include="Dao\IDaointerface.cs" />
-    <Compile Include="Таблицы\Organization.cs" />
     <Compile Include="Dao\OrganizationDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Таблицы\EquipmentRegistryDataContext.cs" />
+    <Compile Include="Таблицы\Models.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
